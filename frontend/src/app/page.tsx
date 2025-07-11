@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
+import EducationLayer from "./components/EducationLayer";
 import { Globe } from "@/components/magicui/globe";
 import { Particles } from "@/components/magicui/particles";
 import { useTheme } from "next-themes";
@@ -41,6 +42,7 @@ export default function Page() {
         <div className="pointer-events-none absolute inset-0 h-full w-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
       </div>
       <div>
+        <EducationLayer/>
       </div>
     </div>
   );
