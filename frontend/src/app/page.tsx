@@ -40,6 +40,8 @@ export default function Page() {
         <Globe className="absolute left-240 top-1/2 transform -translate-y-1/2 scale-[1.5] z-0" />
         <div className="pointer-events-none absolute inset-0 h-full w-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
       </div>
+      <div>
+      </div>
     </div>
   );
 }
