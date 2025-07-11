@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertTriangle, Image as ImageIcon, Video } from "lucide-react"
+import {useCosmicCanvas} from "../components/useCosmicCanvas";
 import { format } from "date-fns"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "lucide-react"
@@ -19,6 +20,8 @@ export default function ApodPage() {
   const [apod, setApod] = useState<ApodResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const canvasRef = useRef(null)
+  useCosmicCanvas(canvasRef);
 
   const fetchApod = async () => {
     setLoading(true)
@@ -42,6 +45,13 @@ export default function ApodPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <canvas 
+    ref={canvasRef} 
+    className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none"
+    style={{
+      background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
+    }}
+  />
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">

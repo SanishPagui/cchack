@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect,useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Sun, AlertTriangle, Activity, Radio, Waves, Clock, MapPin, TrendingUp, Shield, Satellite } from "lucide-react"
 import { format, subDays } from "date-fns"
+import {useCosmicCanvas} from "../components/useCosmicCanvas";
 
 interface SolarFlare {
   flrID: string
@@ -73,6 +74,8 @@ export default function SpaceWeatherTracker() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState("flares")
+  const canvasRef = useRef(null)
+  useCosmicCanvas(canvasRef);
 
   const fetchSpaceWeatherData = async () => {
     setLoading(true)
@@ -136,6 +139,13 @@ export default function SpaceWeatherTracker() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+        <canvas 
+    ref={canvasRef} 
+    className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none "
+    style={{
+      background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
+    }}
+  />
       {/* Header */}
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
@@ -439,7 +449,9 @@ export default function SpaceWeatherTracker() {
                             Begin Time
                           </p>
                           <p className="text-white font-medium">
-                            {format(new Date(blackout.beginTime), "MMM dd, HH:mm")}
+                            {blackout.beginTime && !isNaN(new Date(blackout.beginTime).getTime())
+                              ? format(new Date(blackout.beginTime), "MMM dd, HH:mm")
+                              : "Unknown"}
                           </p>
                         </div>
                         <div>
