@@ -6,3 +6,4 @@ build/
 .turbo/
 .cache/
 .env
+.env.local
