@@ -27,51 +27,46 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   useEffect(() => {
-    
-
-    // Menu items staggered animation
-    gsap.fromTo(menuItemsRef.current,
-      { y: -30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.7 }
-    );
-
-    // CTA button animation
-    gsap.fromTo(ctaButtonRef.current,
-      { scale: 0.8, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)", delay: 0.9 }
-    );
+    if (menuItemsRef.current?.length > 0) {
+      gsap.fromTo(menuItemsRef.current,
+        { y: -30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.7 }
+      );
+    }
+  
+    if (ctaButtonRef.current) {
+      gsap.fromTo(ctaButtonRef.current,
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)", delay: 0.9 }
+      );
+    }
   }, []);
-
-  // Scroll-based navbar animation
-  useEffect(() => {
-    gsap.to(navRef.current, {
-      backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.95)' : 'rgba(0, 0, 0, 0.1)',
-      backdropFilter: scrolled ? 'blur(20px)' : 'blur(5px)',
-      borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.05)',
-      duration: 0.4,
-      ease: "power2.out"
-    });
-  }, [scrolled]);
+  
 
   // Mobile menu animations
   useEffect(() => {
+    if (!mobileMenuRef.current) return;
+  
     if (isOpen) {
       gsap.set(mobileMenuRef.current, { display: 'block' });
       gsap.fromTo(mobileMenuRef.current,
         { opacity: 0, y: -50 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
       );
-      
-      gsap.fromTo(mobileMenuRef.current.querySelectorAll('.mobile-menu-item'),
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, delay: 0.2, ease: "power3.out" }
-      );
+  
+      const items = mobileMenuRef.current.querySelectorAll('.mobile-menu-item');
+      if (items.length) {
+        gsap.fromTo(items,
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.4, stagger: 0.1, delay: 0.2, ease: "power3.out" }
+        );
+      }
     } else {
       gsap.to(mobileMenuRef.current,
-        { 
-          opacity: 0, 
-          y: -50, 
-          duration: 0.3, 
+        {
+          opacity: 0,
+          y: -50,
+          duration: 0.3,
           ease: "power2.in",
           onComplete: () => {
             gsap.set(mobileMenuRef.current, { display: 'none' });
@@ -80,6 +75,7 @@ const Navbar = () => {
       );
     }
   }, [isOpen]);
+  
 
   const handleMenuItemHover = (e, index) => {
     setActiveItem(index);
@@ -112,6 +108,18 @@ const Navbar = () => {
       ease: "power2.out"
     });
   };
+  useEffect(() => {
+    if (!navRef.current) return;
+  
+    gsap.to(navRef.current, {
+      backgroundColor: scrolled ? 'rgba(0, 0, 0, 0.95)' : 'rgba(0, 0, 0, 0.1)',
+      backdropFilter: scrolled ? 'blur(20px)' : 'blur(5px)',
+      borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(255, 255, 255, 0.05)',
+      duration: 0.4,
+      ease: "power2.out"
+    });
+  }, [scrolled]);
+  
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
