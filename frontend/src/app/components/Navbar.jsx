@@ -122,7 +122,7 @@ const Navbar = () => {
 
   return (
     <nav 
-      className="fixed w-full top-0 z-[50]  backdrop-blur-sm border-b border-white/5 transition-all duration-300"
+      className="fixed w-full top-0 z-[999]  transition-all duration-300"
     >
       <div className="max-w-7xl lg:max-w-full mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -130,8 +130,8 @@ const Navbar = () => {
           {/* Logo */}
           <div ref={logoRef} className="flex-shrink-0">
             <a href="/" className="flex items-center">
-              <span className="ml-3 text-2xl font-light lg:text-4xl lg:font-semibold text-black tracking-wide">
-                KODIERER
+              <span className="ml-3 text-2xl font-light lg:text-4xl lg:font-semibold text-white tracking-wide">
+                SPACE
               </span>
             </a>
           </div>
@@ -143,7 +143,7 @@ const Navbar = () => {
                 <a
                   ref={el => menuItemsRef.current[index] = el}
                   href={item.href}
-                  className="relative text-black text-lg font-medium tracking-wide py-2 px-1 transition-colors duration-200 hover:text-black flex items-center"
+                  className="relative text-white text-lg font-medium tracking-wide py-2 px-1 transition-colors duration-200 hover:text-white flex items-center"
                   onMouseEnter={(e) => handleMenuItemHover(e, index)}
                   onMouseLeave={(e) => handleMenuItemLeave(e, index)}
                 >
@@ -158,7 +158,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-black/90 hover:text-bllack hover:bg-white/10 transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white/90 hover:text-bllack hover:bg-white/10 transition-colors duration-200"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
