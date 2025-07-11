@@ -13,6 +13,7 @@ import {
   BookOpen,
   ArrowRight,
 } from "lucide-react";
+import { Particles } from "@/components/magicui/particles";
 
 // Cosmic canvas hook (simplified version)
 const useCosmicCanvas = (canvasRef: RefObject<HTMLCanvasElement | null>) => {
@@ -31,47 +32,6 @@ const useCosmicCanvas = (canvasRef: RefObject<HTMLCanvasElement | null>) => {
     };
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-
-    // Create stars
-    for (let i = 0; i < numStars; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2,
-        alpha: Math.random(),
-        speed: Math.random() * 0.5 + 0.1,
-      });
-    }
-
-    // Animation loop
-    const animate = () => {
-      if (ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-      
-      stars.forEach((star) => {
-        star.alpha += star.speed * (Math.random() > 0.5 ? 1 : -1);
-        star.alpha = Math.max(0.1, Math.min(1, star.alpha));
-        
-        if (ctx) {
-          ctx.beginPath();
-        }
-        if (ctx) {
-          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        }
-        if (ctx) {
-          ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-        }
-        if (ctx) {
-          ctx.fill();
-        }
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
@@ -136,7 +96,13 @@ export default function FeaturesPage() {
           background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
         }}
       />
-
+      <Particles
+                className="absolute inset-0 z-0"
+                quantity={500}
+                ease={80}
+                color={"#ffffff"}
+                refresh
+              />
       {/* Header */}
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">

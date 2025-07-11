@@ -15,7 +15,7 @@ const Navbar = () => {
   const ctaButtonRef = useRef(null);
 
   const navItems = [
-    { name: 'Asteriod Tracking', href: '/asteroidTracking' },
+    
   ];
   useEffect(() => {
     const handleScroll = () => {

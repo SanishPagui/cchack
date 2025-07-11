@@ -13,7 +13,7 @@ export default function Page() {
   const { resolvedTheme } = useTheme();
   return (
     <div className="overflow-hidden h-screen w-screen bg-black bg-cover bg-center bg-no-repeat">
-      <Navbar />
+      
       <div className="relative h-full w-full overflow-hidden flex items-center justify-between px-8 lg:px-24">
         {/* Left Content */}
         <div className="z-10 max-w-2xl">
@@ -64,7 +64,7 @@ export default function Page() {
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-white">Real-time</div>
-              <div className="text-sm text-gray-400">NASA Data</div>
+              <div className="text-sm text-gray-400">Data</div>
             </div>
           </div>
         </div>
