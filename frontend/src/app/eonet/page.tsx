@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import {useCosmicCanvas} from "../components/useCosmicCanvas";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
@@ -91,6 +92,8 @@ export default function NaturalEventTracker() {
   const [error, setError] = useState<string | null>(null)
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedStatus, setSelectedStatus] = useState("open")
+  const canvasRef = useRef(null)
+  useCosmicCanvas(canvasRef);
 
   const fetchCategories = async () => {
     try {
@@ -166,6 +169,13 @@ export default function NaturalEventTracker() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <canvas 
+    ref={canvasRef} 
+    className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none"
+    style={{
+      background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
+    }}
+  />
       {/* Header */}
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">

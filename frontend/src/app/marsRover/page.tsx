@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import {useCosmicCanvas} from "../components/useCosmicCanvas";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -70,6 +71,8 @@ export default function MarsRoverPhotos() {
   const [selectedCamera, setSelectedCamera] = useState("all")
   const [sol, setSol] = useState("1000")
   const [selectedPhoto, setSelectedPhoto] = useState<RoverPhoto | null>(null)
+  const canvasRef = useRef(null)
+  useCosmicCanvas(canvasRef);
 
   const fetchRoverManifest = async (rover: string) => {
     try {
@@ -122,6 +125,13 @@ export default function MarsRoverPhotos() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <canvas 
+    ref={canvasRef} 
+    className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none"
+    style={{
+      background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
+    }}
+  />
       {/* Header */}
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
