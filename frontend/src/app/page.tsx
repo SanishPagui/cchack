@@ -14,7 +14,6 @@ export default function Page() {
   return (
     <div className="overflow-hidden h-screen w-screen bg-black bg-cover bg-center bg-no-repeat">
       <Navbar />
-      <Meteors number={30} className="absolute inset-0 z-[1]" />
       <div className="relative h-full w-full overflow-hidden flex items-center justify-between px-8 lg:px-24">
         {/* Left Content */}
         <div className="z-10 max-w-2xl">
@@ -69,7 +68,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-        {/* <Meteors number={30} /> */}
+        <Meteors number={30} className="absolute inset-0 z-[1]" />
         <Particles
           className="absolute inset-0 z-0"
           quantity={500}
