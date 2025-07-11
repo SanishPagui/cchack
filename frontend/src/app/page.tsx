@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
-import EducationLayer from "./components/EducationLayer";
 import { Globe } from "@/components/magicui/globe";
 import { Particles } from "@/components/magicui/particles";
 import { useTheme } from "next-themes";
