@@ -12,6 +12,9 @@ import {
   Satellite,
   BookOpen,
   ArrowRight,
+  Earth,
+  Car,
+  LucideSatellite,
 } from "lucide-react";
 import { Particles } from "@/components/magicui/particles";
 
@@ -57,7 +60,7 @@ const features = [
     name: 'Mars Rover Photos', 
     path: '/marsRover',
     description: 'Explore the latest images from Mars rovers',
-    icon: Camera,
+    icon: Car,
     color: 'text-orange-400'
   },
   { 
@@ -68,18 +71,32 @@ const features = [
     color: 'text-green-400'
   },
   { 
-    name: 'Risk Dashboard', 
-    path: '/riskDashboard',
-    description: 'Comprehensive risk assessment and monitoring',
-    icon: Shield,
+    name: 'EPIC Earth Images', 
+    path: '/epic',
+    description: 'Explore stunning images of Earth from the EPIC camera',
+    icon: Earth,
     color: 'text-purple-400'
   },
   { 
     name: 'Photo of the Day', 
     path: '/photoOfTheDay',
     description: 'Discover stunning astronomy images and explanations',
-    icon: Satellite,
+    icon: Camera,
     color: 'text-cyan-400'
+  },
+  { 
+    name: 'Risk Dashboard', 
+    path: '/riskDashboard',
+    description: 'Comprehensive risk assessment and monitoring',
+    icon: Shield,
+    color: 'text-red-400'
+  },
+  { 
+    name: 'Other Cool Stuff', 
+    path: '/other',
+    description: 'Collection of space-related tools and resources',
+    icon: LucideSatellite,
+    color: 'text-red-400'
   },
 ];
 
@@ -146,7 +163,7 @@ export default function FeaturesPage() {
             return (
               <div
                 key={index}
-                className="bg-gray-900 border border-gray-800 rounded-lg hover:border-gray-700 transition-all duration-300 hover:scale-105 cursor-pointer group"
+                className="bg-gray-900 border border-white/50 rounded-lg hover:border-gray-700 transition-all duration-300 hover:scale-105 cursor-pointer group"
                 onClick={() => window.open(feature.path, '_blank')}
               >
                 <div className="p-6">
@@ -161,20 +178,10 @@ export default function FeaturesPage() {
                         </h3>
                       </div>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed mb-4">
                     {feature.description}
                   </p>
-                  <button 
-                    className="w-full border border-gray-700 text-white hover:bg-gray-800 hover:border-gray-600 py-2 px-4 rounded-md transition-colors"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open(feature.path, '_blank');
-                    }}
-                  >
-                    Launch Feature
-                  </button>
                 </div>
               </div>
             );

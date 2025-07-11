@@ -3,11 +3,30 @@
 import { useState, useEffect, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import {useCosmicCanvas} from "../components/useCosmicCanvas";
+import { useCosmicCanvas } from "../components/useCosmicCanvas"
 import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Globe, Calendar, Camera, Sun, Moon, Download, Eye, Palette, Satellite, MapPin } from "lucide-react"
-import { format, subDays } from "date-fns"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
+  Globe,
+  Calendar,
+  Camera,
+  Sun,
+  Moon,
+  Download,
+  Eye,
+  Palette,
+  Satellite,
+  MapPin,
+} from "lucide-react"
+import { format } from "date-fns"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 interface EpicImage {
   identifier: string
@@ -82,23 +101,20 @@ export default function EpicEarthImages() {
   const [imageType, setImageType] = useState<"natural" | "enhanced">("natural")
   const [selectedImage, setSelectedImage] = useState<EpicImage | null>(null)
   const canvasRef = useRef(null)
-  useCosmicCanvas(canvasRef);
+  useCosmicCanvas(canvasRef)
 
   const fetchImages = async (date: Date, type: "natural" | "enhanced") => {
     setLoading(true)
     setError(null)
-
     try {
       const dateStr = format(date, "yyyy-MM-dd")
-      const response = await fetch(`https://api.nasa.gov/EPIC/api/${type}/date/${dateStr}?api_key=${process.env.NEXT_PUBLIC_NASA_API_KEY}`)
-
+      const response = await fetch(
+        `https://api.nasa.gov/EPIC/api/${type}/date/${dateStr}?api_key=${process.env.NEXT_PUBLIC_NASA_API_KEY}`
+      )
       if (!response.ok) {
-        if (response.status === 404) {
-          throw new Error("No images available for this date")
-        }
+        if (response.status === 404) throw new Error("No images available for this date (Try an older date, preferably 4 days before)")
         throw new Error("Failed to fetch EPIC images")
       }
-
       const data = await response.json()
       setImages(data)
     } catch (err) {
@@ -115,12 +131,12 @@ export default function EpicEarthImages() {
 
   const getImageUrl = (image: EpicImage, size: "thumbs" | "png" = "png") => {
     const dateStr = format(new Date(image.date), "yyyy/MM/dd")
-    return `https://api.nasa.gov/EPIC/archive/${imageType}/${dateStr}/${size}/${image.image}.${size === "thumbs" ? "jpg" : "png"}?api_key=DEMO_KEY`
+    return `https://api.nasa.gov/EPIC/archive/${imageType}/${dateStr}/${size}/${image.image}.${
+      size === "thumbs" ? "jpg" : "png"
+    }?api_key=${process.env.NEXT_PUBLIC_NASA_API_KEY}`
   }
 
-  const formatDistance = (distance: number) => {
-    return (distance / 1000).toFixed(0) + " km"
-  }
+  const formatDistance = (distance: number) => `${(distance / 1000).toFixed(0)} km`
 
   const formatCoordinates = (lat: number, lon: number) => {
     const latDir = lat >= 0 ? "N" : "S"
@@ -129,19 +145,20 @@ export default function EpicEarthImages() {
   }
 
   const calculateDistance = (pos: { x: number; y: number; z: number }) => {
-    return Math.sqrt(pos.x * pos.x + pos.y * pos.y + pos.z * pos.z)
+    return Math.sqrt(pos.x ** 2 + pos.y ** 2 + pos.z ** 2)
   }
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <canvas 
-    ref={canvasRef} 
-    className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none"
-    style={{
-      background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
-    }}
-  />
-      {/* Header */}
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)",
+        }}
+      />
+
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
@@ -169,7 +186,7 @@ export default function EpicEarthImages() {
 
       <div className="container mx-auto px-4 py-8">
         {/* Controls */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
+        <div className="flex flex-col md:flex-row gap-4 mb-8 items-center">
           <Select value={imageType} onValueChange={(value: "natural" | "enhanced") => setImageType(value)}>
             <SelectTrigger className="bg-gray-900 border-gray-700 md:w-48">
               <SelectValue placeholder="Image Type" />
@@ -177,41 +194,27 @@ export default function EpicEarthImages() {
             <SelectContent className="bg-gray-900 border-gray-700">
               <SelectItem value="natural">
                 <div className="flex items-center gap-2">
-                  <Palette className="w-4 h-4" />
-                  Natural Color
+                  <Palette className="w-4 h-4" /> Natural Color
                 </div>
               </SelectItem>
               <SelectItem value="enhanced">
                 <div className="flex items-center gap-2">
-                  <Palette className="w-4 h-4" />
-                  Enhanced Color
+                  <Palette className="w-4 h-4" /> Enhanced Color
                 </div>
               </SelectItem>
             </SelectContent>
           </Select>
 
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              onClick={() => setSelectedDate(subDays(selectedDate, 1))}
-              className="border-gray-700 text-white hover:bg-gray-800"
-            >
-              Previous Day
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => setSelectedDate(new Date())}
-              className="border-gray-700 text-white hover:bg-gray-800"
-            >
-              Today
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => setSelectedDate(subDays(selectedDate, -1))}
-              className="border-gray-700 text-white hover:bg-gray-800"
-            >
-              Next Day
-            </Button>
+          <div className="bg-gray-900 border border-gray-700 rounded-md px-4 py-2 text-white">
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date: Date | null) => {
+                if (date) setSelectedDate(date)
+              }}
+              dateFormat="yyyy-MM-dd"
+              maxDate={new Date()}
+              className="bg-transparent focus:outline-none cursor-pointer"
+            />
           </div>
         </div>
 
@@ -315,7 +318,7 @@ export default function EpicEarthImages() {
           <div className="text-center py-12">
             <Camera className="w-16 h-16 text-gray-600 mx-auto mb-4" />
             <p className="text-gray-400 text-lg">No images available for this date</p>
-            <p className="text-gray-500 text-sm">Try selecting a different date</p>
+            <p className="text-gray-500 text-sm">Try an older date (preferably 4 days before the current date)</p>
           </div>
         )}
 
@@ -335,25 +338,6 @@ export default function EpicEarthImages() {
                   <p className="text-gray-400 text-sm">
                     {format(new Date(selectedImage.date), "EEEE, MMMM dd, yyyy 'at' HH:mm:ss")} UTC
                   </p>
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open(getImageUrl(selectedImage), "_blank")}
-                    className="border-gray-700 text-white hover:bg-gray-800"
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download HD
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setSelectedImage(null)}
-                    className="border-gray-700 text-white hover:bg-gray-800"
-                  >
-                    Close
-                  </Button>
                 </div>
               </div>
 
