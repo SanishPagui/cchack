@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import About from './components/About'
 import Home from './components/Home'
 import Spline from '@splinetool/react-spline/next'
+import SpaceHomepage from './components/Features'
 
 const Page = () => {
   return (
@@ -20,6 +21,7 @@ const Page = () => {
         {/* cover the watermark */}
         <div className="absolute bottom-0 w-full h-10 bg-black z-20 "></div>
       </div>
+      <SpaceHomepage/>
       <About />
       <Footer />
     </div>
