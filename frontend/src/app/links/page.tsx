@@ -1,11 +1,7 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '@/components/ui/alert';
+import { useRef, useEffect, RefObject } from "react";
+
 import {
   Zap,
   AlertTriangle,
@@ -19,13 +15,13 @@ import {
 } from "lucide-react";
 
 // Cosmic canvas hook (simplified version)
-const useCosmicCanvas = (canvasRef) => {
+const useCosmicCanvas = (canvasRef: RefObject<HTMLCanvasElement | null>) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    const stars = [];
+    const stars: { x: number; y: number; radius: number; alpha: number; speed: number; }[] = [];
     const numStars = 200;
 
     // Set canvas size
@@ -49,16 +45,26 @@ const useCosmicCanvas = (canvasRef) => {
 
     // Animation loop
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
       
       stars.forEach((star) => {
         star.alpha += star.speed * (Math.random() > 0.5 ? 1 : -1);
         star.alpha = Math.max(0.1, Math.min(1, star.alpha));
         
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-        ctx.fill();
+        if (ctx) {
+          ctx.beginPath();
+        }
+        if (ctx) {
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        }
+        if (ctx) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        }
+        if (ctx) {
+          ctx.fill();
+        }
       });
 
       requestAnimationFrame(animate);
