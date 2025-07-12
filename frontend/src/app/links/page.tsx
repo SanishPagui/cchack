@@ -136,7 +136,7 @@ export default function FeaturesPage() {
 
             {/* Back Button */}
             <button
-              onClick={() => {window.location.href = '/home';}}
+              onClick={() => {window.location.href = '/';}}
               className="px-4 py-2 text-sm border border-gray-600 rounded-lg text-gray-300 hover:bg-gray-800 transition"
             >
               ← Back to Home
