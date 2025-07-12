@@ -14,7 +14,6 @@ export default function AboutPage() {
   return (
     <div>
         <Navbar />
-        <TestimonialsSection/>
         <About/>
     </div>
   )

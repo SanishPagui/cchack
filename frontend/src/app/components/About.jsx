@@ -208,18 +208,6 @@ const SpaceAbout = () => {
           </div>
 
           {/* Call to action */}
-          <div className="text-center">
-            <h3 className="text-2xl font-semibold mb-6 text-purple-300">
-              Ready to Explore the Possibilities?
-            </h3>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join us on a journey through the cosmos of creativity and innovation. 
-              Let's create something extraordinary together.
-            </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
-              Get in Touch
-            </button>
-          </div>
         </div>
       </div>
     </div>
