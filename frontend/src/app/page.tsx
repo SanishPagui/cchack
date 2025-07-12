@@ -13,6 +13,7 @@ export default function Page() {
   const { resolvedTheme } = useTheme();
   return (
     <div className="overflow-hidden h-screen w-screen bg-black bg-cover bg-center bg-no-repeat">
+      <Navbar/>
       
       <div className="relative h-full w-full overflow-hidden flex items-center justify-between px-8 lg:px-24">
         {/* Left Content */}
@@ -44,10 +45,10 @@ export default function Page() {
               className="shadow-2xl"
               background="#ffffff"
               shimmerColor="#000000"
-              onClick={() => { window.location.href = "./"; }}
+              onClick={() => { window.location.href = "./game"; }}
             >
               <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-black dark:text-black lg:text-lg">
-                No Get to Know
+                Play A Game?
               </span>
             </ShimmerButton>
           </div>
