@@ -150,11 +150,17 @@ export default function SpaceWeatherTracker() {
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
   <div className="relative container mx-auto px-4 py-6">
     {/* Back Button */}
-    <button
-      onClick={() => window.location.href = '/links'}
-      className="absolute top-8 -left-28  px-3 py-1 text-sm text-white  hover:bg-gray-700 rounded-md flex items-center gap-1 z-50"
+   <button
+      onClick={() => window.location.href = "/links"}
+      className="absolute top-8 -left-32 group inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg hover:bg-gray-700/90 hover:border-gray-600 hover:scale-105 active:scale-95 transition-all duration-200 z-50 shadow-lg hover:shadow-xl"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        fill="none" 
+        viewBox="0 0 24 24" 
+        stroke="currentColor" 
+        className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
+      >
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
       </svg>
       Back

@@ -136,11 +136,12 @@ export default function FeaturesPage() {
 
             {/* Back Button */}
             <button
-              onClick={() => {window.location.href = '/';}}
-              className="px-4 py-2 text-sm border border-gray-600 rounded-lg text-gray-300 hover:bg-gray-800 transition"
-            >
-              ← Back to Home
-            </button>
+      onClick={() => {window.location.href = '/';}}
+      className="group inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-gray-300 bg-gray-900/50 backdrop-blur-sm border border-gray-600/50 rounded-lg hover:text-white hover:bg-gray-800/80 hover:border-gray-500 hover:scale-105 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg"
+    >
+      <span className="text-base transition-transform duration-200 group-hover:-translate-x-0.5">←</span>
+      Back to Home
+    </button>
           </div>
         </div>
       </header>
