@@ -157,9 +157,20 @@ export default function OtherPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center">Explore Celestial Bodies</h1>
+    <div className="min-h-screen bg-black text-white relative">
+    {/* Back Button */}
+    <button
+      onClick={() => window.location.href = "/links"}
+      className="absolute top-8 left-12 px-3 py-1 text-sm text-white hover:bg-gray-700 rounded-md flex items-center gap-1 z-50"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
+
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-8 text-center">Explore Celestial Bodies</h1>
 
         {/* Planet Search Section */}
         <div className="mb-12">

@@ -159,30 +159,41 @@ export default function EpicEarthImages() {
         }}
       />
 
-      <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <Globe className="w-6 h-6 text-black" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold">EPIC Earth Images</h1>
-                <p className="text-gray-400 text-sm">Earth Polychromatic Imaging Camera</p>
-              </div>
-            </div>
-            <div className="text-right">
-              <div className="flex items-center gap-2 mb-1">
-                <Satellite className="w-5 h-5 text-blue-400" />
-                <span className="text-lg font-bold">DSCOVR Satellite</span>
-              </div>
-              <p className="text-sm text-gray-400">
-                {images.length} images • {format(selectedDate, "MMM dd, yyyy")}
-              </p>
-            </div>
-          </div>
+<header className=" border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
+  {/* Back Button */}
+  <button
+    onClick={() => window.location.href = '/links'}
+    className="absolute top-8 left-12 px-3 py-1 text-sm text-white hover:bg-gray-700 rounded-md flex items-center gap-1 z-50"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+    </svg>
+    Back
+  </button>
+
+  <div className="container mx-auto px-4 py-6">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+          <Globe className="w-6 h-6 text-black" />
         </div>
-      </header>
+        <div>
+          <h1 className="text-2xl font-bold">EPIC Earth Images</h1>
+          <p className="text-gray-400 text-sm">Earth Polychromatic Imaging Camera</p>
+        </div>
+      </div>
+      <div className="text-right">
+        <div className="flex items-center gap-2 mb-1">
+          <Satellite className="w-5 h-5 text-blue-400" />
+          <span className="text-lg font-bold">DSCOVR Satellite</span>
+        </div>
+        <p className="text-sm text-gray-400">
+          {images.length} images • {format(selectedDate, "MMM dd, yyyy")}
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
 
       <div className="container mx-auto px-4 py-8">
         {/* Controls */}

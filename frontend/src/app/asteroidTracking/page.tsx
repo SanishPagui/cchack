@@ -112,34 +112,57 @@ export default function AsteroidTracker() {
 
       {/* Header */}
       <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <Zap className="w-6 h-6 text-black" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold">Asteroid Tracker</h1>
-                <p className="text-gray-400 text-sm">
-                  Near Earth Object Monitoring
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-right">
-                <p className="text-sm text-gray-400">Total Objects</p>
-                <p className="text-xl font-bold">{asteroids.length}</p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-gray-400">Potentially Hazardous</p>
-                <p className="text-xl font-bold text-red-400">
-                  {hazardousCount}
-                </p>
-              </div>
-            </div>
-          </div>
+  <div className="relative container mx-auto px-4 py-6">
+    {/* Back Button */}
+    <Button
+      variant="ghost"
+      onClick={() => {window.location.href = '/links';}}
+      className="absolute top-8 -left-32 z-50 text-white hover:bg-gray-500 flex items-center space-x-1 "
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className="w-5 h-5"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M15.75 19.5L8.25 12l7.5-7.5"
+        />
+      </svg>
+      <span>Back</span>
+    </Button>
+
+    {/* Header Content */}
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+          <Zap className="w-6 h-6 text-black" />
         </div>
-      </header>
+        <div>
+          <h1 className="text-2xl font-bold">Asteroid Tracker</h1>
+          <p className="text-gray-400 text-sm">
+            Near Earth Object Monitoring
+          </p>
+        </div>
+      </div>
+      <div className="flex items-center space-x-4">
+        <div className="text-right">
+          <p className="text-sm text-gray-400">Total Objects</p>
+          <p className="text-xl font-bold">{asteroids.length}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-sm text-gray-400">Potentially Hazardous</p>
+          <p className="text-xl font-bold text-red-400">{hazardousCount}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
 
       <div className="container mx-auto px-4 py-8">
         {/* Controls */}

@@ -176,38 +176,51 @@ export default function NaturalEventTracker() {
       background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
     }}
   />
+  
       {/* Header */}
-      <header className="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <Globe className="w-6 h-6 text-black" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold">Natural Event Tracker</h1>
-                <p className="text-gray-400 text-sm">EONET - Earth Observatory Natural Event Tracker</p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-              <div>
-                <p className="text-sm text-gray-400">Total Events</p>
-                <p className="text-xl font-bold text-blue-400">{events.length}</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-400">Categories</p>
-                <p className="text-xl font-bold text-green-400">{categories.length}</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-400">Active Now</p>
-                <p className="text-xl font-bold text-orange-400">
-                  {events.filter((e) => selectedStatus === "open").length}
-                </p>
-              </div>
-            </div>
-          </div>
+      <header className=" border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
+  {/* Back Button */}
+  <button
+    onClick={() => window.location.href = '/links'}
+    className="absolute top-8 left-12 px-3 py-1 text-sm text-white hover:bg-gray-700 rounded-md flex items-center gap-1 z-50"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+    </svg>
+    Back
+  </button>
+
+  <div className="container mx-auto px-4 py-6">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-3">
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+          <Globe className="w-6 h-6 text-black" />
         </div>
-      </header>
+        <div>
+          <h1 className="text-2xl font-bold">Natural Event Tracker</h1>
+          <p className="text-gray-400 text-sm">EONET - Earth Observatory Natural Event Tracker</p>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
+        <div>
+          <p className="text-sm text-gray-400">Total Events</p>
+          <p className="text-xl font-bold text-blue-400">{events.length}</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-400">Categories</p>
+          <p className="text-xl font-bold text-green-400">{categories.length}</p>
+        </div>
+        <div>
+          <p className="text-sm text-gray-400">Active Now</p>
+          <p className="text-xl font-bold text-orange-400">
+            {events.filter((e) => selectedStatus === "open").length}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
 
       <div className="container mx-auto px-4 py-8">
         {/* Controls */}

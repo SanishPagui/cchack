@@ -64,15 +64,29 @@ export default function RiskDashboard() {
   const COLORS = ["#FF4136", "#2ECC40"];
 
   return (
-    <div className="h-screen w-screen bg-gray-900 text-gray-100 p-4 space-y-8 overflow-auto">
-      <canvas 
-    ref={canvasRef} 
-    className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none"
-    style={{
-      background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
-    }}
-  />
-      <h1 className="text-3xl font-bold text-center">🛰️ Risk Analysis Dashboard</h1>
+    <div className="h-screen w-screen bg-gray-900 text-gray-100 p-4 space-y-8 overflow-auto relative">
+    {/* Back Button */}
+    <button
+      onClick={() => window.location.href = "/links"}
+      className="absolute top-4 left-4 px-3 py-1 text-sm text-white bg-gray-700 hover:bg-gray-600 rounded-md flex items-center gap-1 z-50"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
+
+    {/* Background Canvas */}
+    <canvas 
+      ref={canvasRef} 
+      className="fixed top-0 left-0 w-full h-full min-h-screen pointer-events-none"
+      style={{
+        background: 'radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1) 0%, rgba(30, 41, 59, 0.05) 50%, transparent 100%)'
+      }}
+    />
+
+    {/* Updated Header */}
+    <h1 className="text-3xl font-bold text-center">☄️ Near-Earth Asteroid Risk Dashboard</h1>
 
       {/* Charts */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8">

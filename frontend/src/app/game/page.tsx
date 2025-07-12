@@ -352,7 +352,17 @@ export default function RetroSpaceShooter() {
   }, [gameLoop, gameState.gameOver, gameState.paused])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-mono">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-mono relative">
+    {/* Back Button */}
+    <button
+      onClick={() => window.location.href = "/links"}
+      className="absolute top-8 left-12 px-4 py-2 text-lg text-white hover:bg-gray-700 rounded-md flex items-center gap-1 z-50"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
       <div className="mb-4 flex gap-8 text-xl">
         <div>Score: {gameState.score}</div>
         <div>Lives: {gameState.lives}</div>

@@ -130,20 +130,21 @@ export default function FeaturesPage() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold">Space Explorer</h1>
-                <p className="text-gray-400 text-sm">
-                  All Features & Tools
-                </p>
+                <p className="text-gray-400 text-sm">All Features & Tools</p>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-right">
-                <p className="text-sm text-gray-400">Total Features</p>
-                <p className="text-xl font-bold">{features.length}</p>
-              </div>
-            </div>
+
+            {/* Back Button */}
+            <button
+              onClick={() => {window.location.href = '/home';}}
+              className="px-4 py-2 text-sm border border-gray-600 rounded-lg text-gray-300 hover:bg-gray-800 transition"
+            >
+              ← Back to Home
+            </button>
           </div>
         </div>
       </header>
+
 
       <div className="container mx-auto px-4 py-8">
         {/* Introduction */}
