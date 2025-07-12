@@ -225,19 +225,19 @@ export default function SpaceWeatherTracker() {
         {!loading && !error && (
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 bg-gray-900 border-gray-800">
-              <TabsTrigger value="flares" className="data-[state=active]:bg-gray-800">
+              <TabsTrigger value="flares" className="data-[state=active]:bg-gray-800 text-white">
                 <Sun className="w-4 h-4 mr-2" />
                 Solar Flares
               </TabsTrigger>
-              <TabsTrigger value="cmes" className="data-[state=active]:bg-gray-800">
+              <TabsTrigger value="cmes" className="data-[state=active]:bg-gray-800 text-white">
                 <Waves className="w-4 h-4 mr-2" />
                 CMEs
               </TabsTrigger>
-              <TabsTrigger value="storms" className="data-[state=active]:bg-gray-800">
+              <TabsTrigger value="storms" className="data-[state=active]:bg-gray-800 text-white">
                 <Activity className="w-4 h-4 mr-2" />
                 Geo Storms
               </TabsTrigger>
-              <TabsTrigger value="radio" className="data-[state=active]:bg-gray-800">
+              <TabsTrigger value="radio" className="data-[state=active]:bg-gray-800 text-white">
                 <Radio className="w-4 h-4 mr-2" />
                 Radio Blackouts
               </TabsTrigger>
