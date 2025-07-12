@@ -283,10 +283,10 @@ export default function NaturalEventTracker() {
         {!loading && !error && (
           <Tabs defaultValue="grid" className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-gray-900 border-gray-800 mb-6">
-              <TabsTrigger value="grid" className="data-[state=active]:bg-gray-800">
+              <TabsTrigger value="grid" className="data-[state=active]:bg-gray-800 text-white">
                 Grid View
               </TabsTrigger>
-              <TabsTrigger value="category" className="data-[state=active]:bg-gray-800">
+              <TabsTrigger value="category" className="data-[state=active]:bg-gray-800 text-white">
                 By Category
               </TabsTrigger>
             </TabsList>
