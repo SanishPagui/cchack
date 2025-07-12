@@ -127,7 +127,7 @@ export default function AboutPage() {
             <span className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full text-sm font-medium text-purple-200 border border-purple-500/30">React</span>
             <span className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full text-sm font-medium text-blue-200 border border-blue-500/30">TailwindCSS</span>
             <span className="px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full text-sm font-medium text-green-200 border border-green-500/30">NASA APIs</span>
-            <span className="px-4 py-2 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-full text-sm font-medium text-pink-200 border border-pink-500/30">Love ❤️</span>
+            {/* <span className="px-4 py-2 bg-gradient-to-r from-pink-500/20 to-rose-500/20 rounded-full text-sm font-medium text-pink-200 border border-pink-500/30">Love ❤️</span> */}
           </div>
         </div>
 
