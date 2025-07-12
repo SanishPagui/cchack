@@ -15,7 +15,7 @@ const Navbar = () => {
   const ctaButtonRef = useRef(null);
 
   const navItems = [
-    
+    {name: 'About', href: '/about', isExternal: false},
   ];
   useEffect(() => {
     const handleScroll = () => {
@@ -129,14 +129,14 @@ const Navbar = () => {
     <nav 
       className="fixed w-full top-0 z-[999]  transition-all duration-300"
     >
-      <div className="max-w-7xl lg:max-w-full mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl lg:max-w-full mx-auto px-6 lg:px-16">
         <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
           <div ref={logoRef} className="flex-shrink-0">
             <a href="/" className="flex items-center">
               <span className="ml-3 text-2xl font-light lg:text-4xl lg:font-semibold text-white tracking-wide">
-                Kodierer
+                AstroCore
               </span>
             </a>
           </div>

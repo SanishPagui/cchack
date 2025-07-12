@@ -165,7 +165,7 @@ export default function FeaturesPage() {
               <div
                 key={index}
                 className="bg-gray-900 border border-white/50 rounded-lg hover:border-gray-700 transition-all duration-300 hover:scale-105 cursor-pointer group"
-                onClick={() => window.open(feature.path, '_blank')}
+                onClick={() => window.location.href=feature.path} 
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
