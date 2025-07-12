@@ -68,7 +68,7 @@ const GAME_CONFIG = {
 
 export default function EnhancedSpaceShooter() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const gameLoopRef = useRef<number>()
+  const gameLoopRef = useRef<number | null>(null)
   const keysRef = useRef<Set<string>>(new Set())
   const shakeRef = useRef({ x: 0, y: 0, intensity: 0 })
   const audioContextRef = useRef<AudioContext | null>(null)
