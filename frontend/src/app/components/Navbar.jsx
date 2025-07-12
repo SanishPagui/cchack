@@ -136,7 +136,7 @@ const Navbar = () => {
           <div ref={logoRef} className="flex-shrink-0">
             <a href="/" className="flex items-center">
               <span className="ml-3 text-2xl font-light lg:text-4xl lg:font-semibold text-white tracking-wide">
-                AstroCore
+                KODIERER
               </span>
             </a>
           </div>
