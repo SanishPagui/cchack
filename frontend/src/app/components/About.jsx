@@ -127,7 +127,7 @@ const SpaceAbout = () => {
       />
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 py-20">
+      <div className="relative z-10 container mx-auto px-6 py-10">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
